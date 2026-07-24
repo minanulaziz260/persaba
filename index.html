@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M AZIZ - Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-start: #e8e8e8;
+      --bg-end: #d4d4d4;
+      --card-bg: #ffffff;
+      --text-primary: #1a1a1a;
+      --text-secondary: #666666;
+      --accent: #22c55e;
+      --border: #e5e5e5;
+      --font-sans: 'Inter', 'Helvetica Neue', system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text-primary);
+      background: radial-gradient(circle at top center, var(--bg-start) 0%, var(--bg-end) 100%);
+      min-height: 100vh;
+      margin: 0;
+      padding: 48px 24px 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 880px;
+      padding: 48px;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.06);
+      margin-bottom: 40px;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 56px;
+      gap: 24px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent);
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: flex-start;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: #000;
+    }
+
+    .nav-link sup {
+      font-size: 11px;
+      color: #888;
+      font-weight: 600;
+      margin-left: 2px;
+      top: -0.4em;
+    }
+
+    .btn-dark {
+      background: var(--text-primary);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .btn-dark:hover {
+      background: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Hero Heading */
+    .hero-heading {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      font-size: clamp(64px, 10vw, 110px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      margin: 0 0 32px 0;
+    }
+
+    .word-outline {
+      -webkit-text-stroke: 2px var(--text-primary);
+      color: transparent;
+    }
+
+    .word-solid {
+      color: var(--text-primary);
+    }
+
+    /* Content Area */
+    .content-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .left-block {
+      justify-self: start;
+      max-width: 280px;
+      z-index: 2;
+    }
+
+    .role {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 12px 0;
+      letter-spacing: -0.01em;
+    }
+
+    .desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0 0 24px 0;
+    }
+
+    .btn-large {
+      padding: 12px 24px;
+      font-size: 14px;
+      gap: 8px;
+    }
+
+    .center-photo {
+      position: relative;
+      width: 280px;
+      height: 380px;
+      border-radius: 140px;
+      background: #ebebeb;
+      margin-bottom: -140px; /* Bleeds outside the card at the bottom */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      overflow: hidden;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .center-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.1);
+    }
+
+    .right-socials {
+      justify-self: end;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
+      z-index: 2;
+    }
+
+    .social-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .social-pill:hover {
+      background: #f4f4f5;
+      border-color: #d4d4d8;
+      transform: translateX(-4px);
+    }
+
+    .social-pill svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .center-photo {
+        width: 240px;
+        height: 320px;
+        border-radius: 120px;
+        margin-bottom: -100px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 32px 16px 80px;
+      }
+      .card {
+        padding: 32px 24px;
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 40px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+      }
+      .social-pill:hover {
+        transform: translateY(-4px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .content-row {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .left-block {
+        grid-row: 1;
+        justify-self: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .right-socials {
+        grid-row: 2;
+        justify-self: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .center-photo {
+        grid-row: 3;
+        margin-bottom: -80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <nav class="navbar">
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        Available for New Project
+      </div>
+
+      <div class="nav-links">
+        <a href="#" class="nav-link">Work <sup>[40]</sup></a>
+        <a href="#" class="nav-link">Service <sup>[4]</sup></a>
+        <a href="#" class="nav-link">Experience <sup>[9y+]</sup></a>
+        <a href="#" class="nav-link">Contact</a>
+      </div>
+
+      <a href="#" class="btn-dark">
+        Let's Talk
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </a>
+    </nav>
+
+    <h1 class="hero-heading">
+      <span class="word-outline">M</span>
+      <span class="word-solid">AZIZ</span>
+    </h1>
+
+    <div class="content-row">
+      <div class="left-block">
+        <h2 class="role">UI/UX Designer</h2>
+        <p class="desc">Creating pixel-perfect, engaging, and user-centric digital experiences that elevate brands.</p>
+        <a href="#" class="btn-dark btn-large">
+          Let's collaborate
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <div class="center-photo">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='%23d4d4d8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16px' font-weight='bold' fill='%2352525b' letter-spacing='1px'%3EPORTRAIT PHOTO%3C/text%3E%3C/svg%3E" alt="M AZIZ Portrait Photo">
+      </div>
+
+      <div class="right-socials">
+        <a href="#" class="social-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"></path>
+          </svg>
+          Dribbble
+        </a>
+        <a href="#" class="social-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          Instagram
+        </a>
+        <a href="#" class="social-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="#" class="social-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2.5 7h5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5h-5V7z"></path>
+            <path d="M2.5 14h5.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5h-5.5v-7z"></path>
+            <path d="M16 14a3 3 0 1 1 6 0c0 2-2.5 4-5 4"></path>
+            <line x1="17" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Behance
+        </a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
