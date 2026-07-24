@@ -502,7 +502,7 @@ const TOURNAMENT_DATA = {
       const pm = D.rounds[r - 1].matches[f];
       return slotTeam(r - 1, f, pm.a > pm.b ? 0 : 1);
     }
-    return { label: "Pemenang " + D.rounds[r - 1].tag + "-" + pad(f + 1) };
+    return { label: "Pemenang di babak sebelumnya" };
   }
 
   /* ---------- badge logo: <img> + fallback SVG inisial ---------- */
