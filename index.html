@@ -387,7 +387,7 @@
    ===================================================================== */
 const TOURNAMENT_DATA = {
 
-  LIVE_MATCH: { round: 2, match: 2 },   // 8 Besar, laga ke-3 (indeks mulai dari 0)
+  LIVE_MATCH: null,   // null jika tidak ada laga yang sedang berlangsung
 
   TEAMS: [
     { name: "PS Sitanjung",          slug: "ps-sitanjung" },
@@ -474,21 +474,6 @@ const TOURNAMENT_DATA = {
   ]
 };
 
-/* =====================================================================
-   SIMULASI PLACEHOLDER — skor acak agar halaman terlihat "hidup".
-   >>> HAPUS SELURUH BLOK INI setelah skor asli diisi manual di atas. <<<
-   ===================================================================== */
-(function simulatePlaceholderScores() {
-  let seed = 20260712;
-  const rnd = () => { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
-  const goals = () => Math.floor(rnd() * 4);
-  const decide = m => { let a = goals(), b = goals(); if (a === b) a += 1 + Math.floor(rnd() * 2); m.a = a; m.b = b; };
-  TOURNAMENT_DATA.rounds[0].matches.forEach(decide);          // 32 Besar: semua selesai
-  TOURNAMENT_DATA.rounds[1].matches.forEach(decide);          // 16 Besar: semua selesai
-  const q = TOURNAMENT_DATA.rounds[2].matches;                // 8 Besar : 2 selesai, 1 live
-  decide(q[0]); decide(q[1]);
-  q[2].a = 1; q[2].b = 1;                                     // laga LIVE (skor berjalan)
-})();
 /* ===================== AKHIR BLOK SIMULASI ===================== */
 
 
