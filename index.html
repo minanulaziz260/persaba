@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PERSABA CUP 7 — Bagan Turnamen Sepakbola Brebes</title>
-<!-- html2canvas for Download Feature -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
   :root{
@@ -45,7 +44,6 @@
   .hidden{display:none!important}
   img.dead{display:none!important}
 
-  /* ================= MASTHEAD ================= */
   .hazard{height:9px;background:repeating-linear-gradient(-45deg,var(--k) 0 16px,var(--y) 16px 32px)}
   .hazard.anim{animation:crawl 2.6s linear infinite}
   @keyframes crawl{to{background-position:45.25px 0}}
@@ -92,7 +90,6 @@
   .chip.alt{background:var(--w);box-shadow:3px 3px 0 var(--y)}
   .chip.alt:hover{box-shadow:5px 5px 0 var(--y)}
 
-  /* ---- ticker berjalan ---- */
   .ticker{background:var(--y);border-top:3px solid var(--k);border-bottom:3px solid var(--k);overflow:hidden}
   .ticker-track{display:flex;width:max-content;animation:tick 34s linear infinite}
   .ticker:hover .ticker-track{animation-play-state:paused}
@@ -102,7 +99,6 @@
   }
   @keyframes tick{to{transform:translateX(-50%)}}
 
-  /* ---- bar legenda + navigasi cepat (sticky) ---- */
   .bar{
     position:sticky;top:0;z-index:40;background:var(--w);border-bottom:3px solid var(--k);
     display:flex;align-items:center;gap:18px;padding:9px 22px;flex-wrap:wrap;
@@ -142,7 +138,6 @@
   main{max-width:1240px;margin:0 auto}
   section{scroll-margin-top:70px}
 
-  /* ================= KEPALA RONDE ================= */
   .round-head{background:var(--k);color:var(--w);position:relative}
   body.dark-mode .round-head { background: #222; }
   .rhead-in{
@@ -172,7 +167,6 @@
   .round.final .prog i{background:#111}
   .round.final .rcount{color:#111}
 
-  /* ================= KARTU PERTANDINGAN ================= */
   .matches{
     display:grid;gap:20px;padding:24px 22px 38px;
     grid-template-columns:repeat(auto-fill,minmax(248px,1fr));
@@ -234,7 +228,6 @@
   }
   .feed{font-size:.58rem;font-weight:700;letter-spacing:.08em;color:var(--k60);text-transform:uppercase}
 
-  /* ================= ZONA JUARA & TOP SKOR ================= */
   .juara-skor-wrap {
     display: grid; grid-template-columns: 1fr; gap: 20px;
     background:var(--k);color:var(--w);margin-top:14px;position:relative;overflow:hidden;
@@ -272,11 +265,9 @@
   footer b{color:var(--y)}
   body.dark-mode footer { background: #111; }
 
-  /* ================= REVEAL SAAT SCROLL ================= */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;transition-delay:var(--d,0ms)}
   .reveal.in{opacity:1;transform:none}
 
-  /* ================= RESPONSIF ================= */
   @media (max-width:900px){
     .mast-inner{grid-template-columns:auto 1fr;gap:18px}
     .stats{grid-column:1 / -1;flex-direction:row;flex-wrap:wrap}
@@ -303,7 +294,6 @@
 </head>
 <body>
 
-  <!-- ================= HEADER TURNAMEN ================= -->
   <div class="hazard anim" aria-hidden="true"></div>
   <header class="masthead" id="capture-area">
     <div class="mast-inner">
@@ -322,14 +312,13 @@
         <h1><span class="t1">PERSABA</span> <span class="t2">CUP&nbsp;7</span></h1>
         <div class="sub">Askab PSSI Brebes <b>★</b> Kabupaten Brebes, Jawa Tengah <b>★</b> Juli – Agustus 2026</div>
       </div>
-      <div class="stats" id="stats"><!-- diisi dari data --></div>
+      <div class="stats" id="stats"></div>
     </div>
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track"><span id="tick1"></span><span id="tick2"></span></div>
     </div>
   </header>
 
-  <!-- ================= LEGENDA + NAVIGASI ================= -->
   <nav class="bar" aria-label="Legenda status dan navigasi babak">
     <span class="bar-label">STATUS</span>
     <div class="legend">
@@ -348,14 +337,13 @@
   </nav>
 
   <main id="bracket-main">
-    <div id="bracket"><!-- seluruh bagan digambar dari data.json --></div>
+    <div id="bracket"></div>
 
-    <!-- ================= ZONA JUARA & TOP SKOR ================= -->
     <section class="juara-skor-wrap reveal">
       <div class="juara-in juara">
         <h2>TAHTA JUARA</h2>
         <div class="hazard" aria-hidden="true"></div>
-        <div class="juara-slot" id="juara-slot"><!-- diisi dari data --></div>
+        <div class="juara-slot" id="juara-slot"></div>
       </div>
       <div class="top-skor-in">
         <h2>TOP SKOR</h2>
@@ -368,7 +356,6 @@
             </tr>
           </thead>
           <tbody id="top-skor-body">
-            <!-- diisi dari data -->
           </tbody>
         </table>
       </div>
@@ -387,29 +374,97 @@
 
 <script>
 /* =====================================================================
-   APP LOGIC: Fetch Data & Render
+   DATA TURNAMEN KEMBALI DI SATUKAN DI SINI UNTUK KEMUDAHAN LOKAL
    ===================================================================== */
-let D = null;
+const D = {
+  "LIVE_MATCH": null,
+  "TEAMS": [
+    { "name": "PS Sitanjung",          "slug": "ps-sitanjung" },
+    { "name": "Persika Kaligangsa",    "slug": "persika-kaligangsa" },
+    { "name": "Garuda Pabuaran",       "slug": "garuda-pabuaran" },
+    { "name": "Bintang Timur Brebes",  "slug": "bintang-timur-brebes" },
+    { "name": "Ksatria Wanasari",      "slug": "ksatria-wanasari" },
+    { "name": "Halilintar Bulakamba",  "slug": "halilintar-bulakamba" },
+    { "name": "Putra Salem",           "slug": "putra-salem" },
+    { "name": "Singa Jatibarang",      "slug": "singa-jatibarang" },
+    { "name": "Elang Biru Songgom",    "slug": "elang-biru-songgom" },
+    { "name": "Banteng Ketanggungan",  "slug": "banteng-ketanggungan" },
+    { "name": "Persada Sirampog",      "slug": "persada-sirampog" },
+    { "name": "Macan Larangan",        "slug": "macan-larangan" },
+    { "name": "Patriot Tanjung",       "slug": "patriot-tanjung" },
+    { "name": "Samudra Losari",        "slug": "samudra-losari" },
+    { "name": "Petir Banjarharjo",     "slug": "petir-banjarharjo" },
+    { "name": "Kencana Bumiayu",       "slug": "kencana-bumiayu" },
+    { "name": "Perkasa Paguyangan",    "slug": "perkasa-paguyangan" },
+    { "name": "Guntur Tonjong",        "slug": "guntur-tonjong" },
+    { "name": "Satria Kersana",        "slug": "satria-kersana" },
+    { "name": "Persibo Bantarkawung",  "slug": "persibo-bantarkawung" },
+    { "name": "Rajawali Randusanga",   "slug": "rajawali-randusanga" },
+    { "name": "Benteng Pasarbatang",   "slug": "benteng-pasarbatang" },
+    { "name": "Pangeran Limbangan",    "slug": "pangeran-limbangan" },
+    { "name": "Cakra Pesantunan",      "slug": "cakra-pesantunan" },
+    { "name": "Wirabraja Tengki",      "slug": "wirabraja-tengki" },
+    { "name": "Siliwangi Wangandalem", "slug": "siliwangi-wangandalem" },
+    { "name": "Naga Sengon",           "slug": "naga-sengon" },
+    { "name": "Bayu Sakti Pebatan",    "slug": "bayu-sakti-pebatan" },
+    { "name": "Hiu Kaliwlingi",        "slug": "hiu-kaliwlingi" },
+    { "name": "Kijang Cinanas",        "slug": "kijang-cinanas" },
+    { "name": "Lodaya Kedungtukang",   "slug": "lodaya-kedungtukang" },
+    { "name": "Lembu Cikakak",         "slug": "lembu-cikakak" }
+  ],
+  "rounds": [
+    { "name": "32 BESAR", "tag": "32B", "matches": [
+      { "date": "Sab, 11 Jul 2026 • 13.00 WIB", "a": null, "b": null },
+      { "date": "Sab, 11 Jul 2026 • 15.15 WIB", "a": null, "b": null },
+      { "date": "Sab, 11 Jul 2026 • 19.30 WIB", "a": null, "b": null },
+      { "date": "Min, 12 Jul 2026 • 13.00 WIB", "a": null, "b": null },
+      { "date": "Min, 12 Jul 2026 • 15.15 WIB", "a": null, "b": null },
+      { "date": "Min, 12 Jul 2026 • 19.30 WIB", "a": null, "b": null },
+      { "date": "Sel, 14 Jul 2026 • 15.15 WIB", "a": null, "b": null },
+      { "date": "Sel, 14 Jul 2026 • 19.30 WIB", "a": null, "b": null },
+      { "date": "Rab, 15 Jul 2026 • 15.15 WIB", "a": null, "b": null },
+      { "date": "Rab, 15 Jul 2026 • 19.30 WIB", "a": null, "b": null },
+      { "date": "Kam, 16 Jul 2026 • 15.15 WIB", "a": null, "b": null },
+      { "date": "Kam, 16 Jul 2026 • 19.30 WIB", "a": null, "b": null },
+      { "date": "Sab, 18 Jul 2026 • 13.00 WIB", "a": null, "b": null },
+      { "date": "Sab, 18 Jul 2026 • 15.15 WIB", "a": null, "b": null },
+      { "date": "Sab, 18 Jul 2026 • 19.30 WIB", "a": null, "b": null },
+      { "date": "Min, 19 Jul 2026 • 15.15 WIB", "a": null, "b": null }
+    ]},
+    { "name": "16 BESAR", "tag": "16B", "matches": [
+      { "date": "Sel, 21 Jul 2026 • 15.15 WIB", "a": null, "b": null },
+      { "date": "Sel, 21 Jul 2026 • 19.30 WIB", "a": null, "b": null },
+      { "date": "Rab, 22 Jul 2026 • 15.15 WIB", "a": null, "b": null },
+      { "date": "Rab, 22 Jul 2026 • 19.30 WIB", "a": null, "b": null },
+      { "date": "Kam, 23 Jul 2026 • 15.15 WIB", "a": null, "b": null },
+      { "date": "Kam, 23 Jul 2026 • 19.30 WIB", "a": null, "b": null },
+      { "date": "Sab, 25 Jul 2026 • 15.15 WIB", "a": null, "b": null },
+      { "date": "Sab, 25 Jul 2026 • 19.30 WIB", "a": null, "b": null }
+    ]},
+    { "name": "8 BESAR", "tag": "8B", "matches": [
+      { "date": "Min, 26 Jul 2026 • 15.15 WIB", "a": null, "b": null },
+      { "date": "Min, 26 Jul 2026 • 19.30 WIB", "a": null, "b": null },
+      { "date": "Sel, 28 Jul 2026 • 15.15 WIB", "a": null, "b": null },
+      { "date": "Sel, 28 Jul 2026 • 19.30 WIB", "a": null, "b": null }
+    ]},
+    { "name": "SEMI FINAL", "tag": "SF", "matches": [
+      { "date": "Sab, 08 Agu 2026 • 15.15 WIB", "a": null, "b": null },
+      { "date": "Sab, 08 Agu 2026 • 19.30 WIB", "a": null, "b": null }
+    ]},
+    { "name": "FINAL", "tag": "FINAL", "matches": [
+      { "date": "Min, 16 Agu 2026 • 19.00 WIB", "a": null, "b": null }
+    ]}
+  ],
+  "top_scorers": [
+    {"name": "Belum Ada", "team": "-", "goals": 0}
+  ]
+}
+;
+
 let activeHighlightTeam = null;
 
-async function loadData() {
-  try {
-    const res = await fetch('data.json?t=' + new Date().getTime());
-    D = await res.json();
-    render();
-  } catch(e) {
-    console.error("Gagal memuat data.json", e);
-    if(!D) document.getElementById('bracket').innerHTML = '<p style="text-align:center;padding:50px;">Gagal memuat data pertandingan.</p>';
-  }
-}
-
-// Auto-refresh tiap 60 detik
-setInterval(loadData, 60000);
-
-/* ---------- FITUR: HIGHLIGHT JALUR TIM ---------- */
 function highlightTeam(slug) {
   if (activeHighlightTeam === slug) {
-    // toggle off
     activeHighlightTeam = null;
     document.querySelectorAll('.match').forEach(el => {
       el.classList.remove('highlight');
@@ -419,7 +474,6 @@ function highlightTeam(slug) {
   }
   activeHighlightTeam = slug;
   document.querySelectorAll('.match').forEach(el => {
-    // cek apakah match ini melibatkan tim yang di-klik
     const hasTeam = el.dataset.teams && el.dataset.teams.includes(slug);
     if (hasTeam) {
       el.classList.add('highlight');
@@ -431,19 +485,16 @@ function highlightTeam(slug) {
   });
 }
 
-/* ---------- FITUR: DARK MODE ---------- */
 function toggleDarkMode() {
   document.body.classList.toggle('dark-mode');
 }
 
-/* ---------- FITUR: DOWNLOAD GAMBAR ---------- */
 function downloadImage() {
   const btn = document.querySelector('.btn-y');
   btn.textContent = 'TUNGGU...';
   const overlay = document.getElementById('loading-overlay');
   overlay.style.display = 'flex';
   
-  // reset highlight sebelum capture
   if(activeHighlightTeam) highlightTeam(activeHighlightTeam);
 
   html2canvas(document.body, {
@@ -465,9 +516,6 @@ function downloadImage() {
   });
 }
 
-/* =====================================================================
-   MESIN RENDER
-   ===================================================================== */
 function render() {
   if(!D) return;
   const $ = s => document.querySelector(s);
@@ -500,10 +548,10 @@ function render() {
     const ini = initialsOf(team.name);
     return '<span class="badge ' + extra + '">' +
       '<img src="images/logos/' + team.slug + '.png" alt="Logo ' + esc(team.name) + '" loading="lazy" ' +
-      'onerror="this.classList.add('dead');this.nextElementSibling.classList.remove('hidden')">' +
+      'onerror="this.classList.add(\'dead\');this.nextElementSibling.classList.remove(\'hidden\')">' +
       '<svg class="hidden" viewBox="0 0 48 48" aria-hidden="true" focusable="false">' +
       '<circle cx="24" cy="24" r="21.5" fill="#FFD400" stroke="#111" stroke-width="2.5"/>' +
-      '<text x="24" y="31" text-anchor="middle" font-size="17" font-family="Impact,'Arial Narrow',sans-serif" fill="#111">' + ini + '</text>' +
+      '<text x="24" y="31" text-anchor="middle" font-size="17" font-family="Impact,\'Arial Narrow\',sans-serif" fill="#111">' + ini + '</text>' +
       '</svg></span>';
   }
   const TBD_BADGE =
@@ -517,7 +565,7 @@ function render() {
     const badge = slot.team ? badgeHTML(slot.team) : TBD_BADGE;
     const name = slot.team ? esc(slot.team.name) : esc(slot.label);
     const slug = slot.team ? slot.team.slug : "";
-    return '<div class="' + cls + '" ' + (slug ? 'onclick="highlightTeam(''+slug+'')"' : '') + ' title="Klik untuk sorot tim ini">' + badge + '<div class="tname">' + name + '</div></div>';
+    return '<div class="' + cls + '" ' + (slug ? 'onclick="highlightTeam(\''+slug+'\')"' : '') + ' title="Klik untuk sorot tim ini">' + badge + '<div class="tname">' + name + '</div></div>';
   }
 
   function matchCard(r, m) {
@@ -568,10 +616,8 @@ function render() {
   });
   
   const bracketEl = $("#bracket");
-  // Simpan HTML baru
   bracketEl.innerHTML = html;
   
-  // Apply ulang highlight jika ada
   if(activeHighlightTeam) {
       const active = activeHighlightTeam;
       activeHighlightTeam = null; 
@@ -631,7 +677,6 @@ function render() {
       '<div class="champ-name">? ? ?</div><div class="champ-sub">MENUNGGU HASIL PARTAI FINAL</div>';
   }
   
-  /* Render Top Skor */
   if (D.top_scorers) {
       const topSkorHtml = D.top_scorers.map(t => 
         `<tr><td>${esc(t.name)}</td><td>${esc(t.team)}</td><td class="goals">${t.goals}</td></tr>`
@@ -650,8 +695,7 @@ function render() {
   document.querySelectorAll(".reveal:not(.in)").forEach(el => io.observe(el));
 }
 
-// Inisialisasi awal
-loadData();
+render();
 </script>
 </body>
 </html>
