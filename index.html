@@ -613,7 +613,7 @@ const TOURNAMENT_DATA = {
       }
     }
   }
-  const tickText = "PERSABA CUP 7 ★ " + items.slice(-10).reverse().join("  ★  ") + "  ★  ";
+  const tickText = ("PERSABA CUP 7 ★ " + items.slice(-10).reverse().join("  ★  ") + "  ★  ").repeat(4);
   $("#tick1").textContent = tickText;
   $("#tick2").textContent = tickText;
 
