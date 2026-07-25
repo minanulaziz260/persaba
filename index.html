@@ -294,6 +294,42 @@
 </head>
 <body>
 
+<style>
+  #tarkam-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #e63946;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 9999;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: opacity 0.5s ease-out, top 0.5s ease-out;
+    pointer-events: none;
+    border: 2px solid #ffd700;
+    text-align: center;
+    width: max-content;
+  }
+  #tarkam-toast.hide {
+    opacity: 0;
+    top: -50px;
+  }
+</style>
+
+<div id="tarkam-toast">JAGA SPORTIVITAS, SALAM LIGA SENG 🏆</div>
+
+<script>
+  setTimeout(() => {
+    document.getElementById('tarkam-toast').classList.add('hide');
+  }, 3000);
+</script>
+
   <div class="hazard anim" aria-hidden="true"></div>
   <header class="masthead" id="capture-area">
     <div class="mast-inner">
