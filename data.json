@@ -1,83 +1,391 @@
 {
   "LIVE_MATCH": null,
   "TEAMS": [
-    { "name": "Persaba Rengasbandung",          "slug": "ps-sitanjung" },
-    { "name": "Persika Kaligangsa",    "slug": "persika-kaligangsa" },
-    { "name": "Garuda Pabuaran",       "slug": "garuda-pabuaran" },
-    { "name": "Bintang Timur Brebes",  "slug": "bintang-timur-brebes" },
-    { "name": "Ksatria Wanasari",      "slug": "ksatria-wanasari" },
-    { "name": "Halilintar Bulakamba",  "slug": "halilintar-bulakamba" },
-    { "name": "Putra Salem",           "slug": "putra-salem" },
-    { "name": "Singa Jatibarang",      "slug": "singa-jatibarang" },
-    { "name": "Elang Biru Songgom",    "slug": "elang-biru-songgom" },
-    { "name": "Banteng Ketanggungan",  "slug": "banteng-ketanggungan" },
-    { "name": "Persada Sirampog",      "slug": "persada-sirampog" },
-    { "name": "Macan Larangan",        "slug": "macan-larangan" },
-    { "name": "Patriot Tanjung",       "slug": "patriot-tanjung" },
-    { "name": "Samudra Losari",        "slug": "samudra-losari" },
-    { "name": "Petir Banjarharjo",     "slug": "petir-banjarharjo" },
-    { "name": "Kencana Bumiayu",       "slug": "kencana-bumiayu" },
-    { "name": "Perkasa Paguyangan",    "slug": "perkasa-paguyangan" },
-    { "name": "Guntur Tonjong",        "slug": "guntur-tonjong" },
-    { "name": "Satria Kersana",        "slug": "satria-kersana" },
-    { "name": "Persibo Bantarkawung",  "slug": "persibo-bantarkawung" },
-    { "name": "Rajawali Randusanga",   "slug": "rajawali-randusanga" },
-    { "name": "Benteng Pasarbatang",   "slug": "benteng-pasarbatang" },
-    { "name": "Pangeran Limbangan",    "slug": "pangeran-limbangan" },
-    { "name": "Cakra Pesantunan",      "slug": "cakra-pesantunan" },
-    { "name": "Wirabraja Tengki",      "slug": "wirabraja-tengki" },
-    { "name": "Siliwangi Wangandalem", "slug": "siliwangi-wangandalem" },
-    { "name": "Naga Sengon",           "slug": "naga-sengon" },
-    { "name": "Bayu Sakti Pebatan",    "slug": "bayu-sakti-pebatan" },
-    { "name": "Hiu Kaliwlingi",        "slug": "hiu-kaliwlingi" },
-    { "name": "Kijang Cinanas",        "slug": "kijang-cinanas" },
-    { "name": "Lodaya Kedungtukang",   "slug": "lodaya-kedungtukang" },
-    { "name": "Lembu Cikakak",         "slug": "lembu-cikakak" }
+    {
+      "name": "Balong Raya (Sidamulya)",
+      "slug": "balong-raya-sidamulya"
+    },
+    {
+      "name": "Mitra Muda (Slawi)",
+      "slug": "mitra-muda-slawi"
+    },
+    {
+      "name": "Sinar Muda (Klampis)",
+      "slug": "sinar-muda-klampis"
+    },
+    {
+      "name": "Gandasuli FC (Gandasuli)",
+      "slug": "gandasuli-fc-gandasuli"
+    },
+    {
+      "name": "Perseka (Kedungtukang)",
+      "slug": "perseka-kedungtukang"
+    },
+    {
+      "name": "Tritama (Pesantunan)",
+      "slug": "tritama-pesantunan"
+    },
+    {
+      "name": "Solidaritas FC (Jatibarang)",
+      "slug": "solidaritas-fc-jatibarang"
+    },
+    {
+      "name": "Dekid FC (Debong Kidul)",
+      "slug": "dekid-fc-debong-kidul"
+    },
+    {
+      "name": "Gelora Muda (Kendawa)",
+      "slug": "gelora-muda-kendawa"
+    },
+    {
+      "name": "Brader FC (Sigambir)",
+      "slug": "brader-fc-sigambir"
+    },
+    {
+      "name": "Gema FC (Gumalar)",
+      "slug": "gema-fc-gumalar"
+    },
+    {
+      "name": "Prasaja (Cipetung Paguyangan)",
+      "slug": "prasaja-cipetung-paguyangan"
+    },
+    {
+      "name": "Jakid United (Jatibarang Kidul)",
+      "slug": "jakid-united-jatibarang-kidul"
+    },
+    {
+      "name": "Alea FC (Pasarbatang)",
+      "slug": "alea-fc-pasarbatang"
+    },
+    {
+      "name": "PSIT (Terlangu)",
+      "slug": "psit-terlangu"
+    },
+    {
+      "name": "Pandansari FC (Paguyangan)",
+      "slug": "pandansari-fc-paguyangan"
+    },
+    {
+      "name": "URG (Slawi)",
+      "slug": "urg-slawi"
+    },
+    {
+      "name": "Bhima Sena (Pebatan)",
+      "slug": "bhima-sena-pebatan"
+    },
+    {
+      "name": "Persaba (Rengasbandung)",
+      "slug": "persaba-rengasbandung"
+    },
+    {
+      "name": "AFK Kalisalak (Kalisalak)",
+      "slug": "afk-kalisalak-kalisalak"
+    },
+    {
+      "name": "Liring Galing (Rajegwesi)",
+      "slug": "liring-galing-rajegwesi"
+    },
+    {
+      "name": "Asri FC (Bumiayu)",
+      "slug": "asri-fc-bumiayu"
+    },
+    {
+      "name": "Brebes United (Kauman)",
+      "slug": "brebes-united-kauman"
+    },
+    {
+      "name": "Stronger (Slawi)",
+      "slug": "stronger-slawi"
+    },
+    {
+      "name": "Sindujaya FC (Kertasinduyasa)",
+      "slug": "sindujaya-fc-kertasinduyasa"
+    },
+    {
+      "name": "Diklat HM (Kedungbokor)",
+      "slug": "diklat-hm-kedungbokor"
+    },
+    {
+      "name": "Kebogadung FC (Kebogadung)",
+      "slug": "kebogadung-fc-kebogadung"
+    },
+    {
+      "name": "Lhumbunk FC (Randusanga Kulon)",
+      "slug": "lhumbunk-fc-randusanga-kulon"
+    },
+    {
+      "name": "Tunas Melati (Karangdawa)",
+      "slug": "tunas-melati-karangdawa"
+    },
+    {
+      "name": "Putra Teratai (Krasak)",
+      "slug": "putra-teratai-krasak"
+    },
+    {
+      "name": "Persekal (Kalipucang)",
+      "slug": "persekal-kalipucang"
+    },
+    {
+      "name": "Pokek (Rengaspendawa)",
+      "slug": "pokek-rengaspendawa"
+    }
   ],
   "rounds": [
-    { "name": "32 BESAR", "tag": "32B", "matches": [
-      { "date": "Sab, 11 Jul 2026 • 13.00 WIB", "a": null, "b": null },
-      { "date": "Sab, 11 Jul 2026 • 15.15 WIB", "a": null, "b": null },
-      { "date": "Sab, 11 Jul 2026 • 19.30 WIB", "a": null, "b": null },
-      { "date": "Min, 12 Jul 2026 • 13.00 WIB", "a": null, "b": null },
-      { "date": "Min, 12 Jul 2026 • 15.15 WIB", "a": null, "b": null },
-      { "date": "Min, 12 Jul 2026 • 19.30 WIB", "a": null, "b": null },
-      { "date": "Sel, 14 Jul 2026 • 15.15 WIB", "a": null, "b": null },
-      { "date": "Sel, 14 Jul 2026 • 19.30 WIB", "a": null, "b": null },
-      { "date": "Rab, 15 Jul 2026 • 15.15 WIB", "a": null, "b": null },
-      { "date": "Rab, 15 Jul 2026 • 19.30 WIB", "a": null, "b": null },
-      { "date": "Kam, 16 Jul 2026 • 15.15 WIB", "a": null, "b": null },
-      { "date": "Kam, 16 Jul 2026 • 19.30 WIB", "a": null, "b": null },
-      { "date": "Sab, 18 Jul 2026 • 13.00 WIB", "a": null, "b": null },
-      { "date": "Sab, 18 Jul 2026 • 15.15 WIB", "a": null, "b": null },
-      { "date": "Sab, 18 Jul 2026 • 19.30 WIB", "a": null, "b": null },
-      { "date": "Min, 19 Jul 2026 • 15.15 WIB", "a": null, "b": null }
-    ]},
-    { "name": "16 BESAR", "tag": "16B", "matches": [
-      { "date": "Sel, 21 Jul 2026 • 15.15 WIB", "a": null, "b": null },
-      { "date": "Sel, 21 Jul 2026 • 19.30 WIB", "a": null, "b": null },
-      { "date": "Rab, 22 Jul 2026 • 15.15 WIB", "a": null, "b": null },
-      { "date": "Rab, 22 Jul 2026 • 19.30 WIB", "a": null, "b": null },
-      { "date": "Kam, 23 Jul 2026 • 15.15 WIB", "a": null, "b": null },
-      { "date": "Kam, 23 Jul 2026 • 19.30 WIB", "a": null, "b": null },
-      { "date": "Sab, 25 Jul 2026 • 15.15 WIB", "a": null, "b": null },
-      { "date": "Sab, 25 Jul 2026 • 19.30 WIB", "a": null, "b": null }
-    ]},
-    { "name": "8 BESAR", "tag": "8B", "matches": [
-      { "date": "Min, 26 Jul 2026 • 15.15 WIB", "a": null, "b": null },
-      { "date": "Min, 26 Jul 2026 • 19.30 WIB", "a": null, "b": null },
-      { "date": "Sel, 28 Jul 2026 • 15.15 WIB", "a": null, "b": null },
-      { "date": "Sel, 28 Jul 2026 • 19.30 WIB", "a": null, "b": null }
-    ]},
-    { "name": "SEMI FINAL", "tag": "SF", "matches": [
-      { "date": "Sab, 08 Agu 2026 • 15.15 WIB", "a": null, "b": null },
-      { "date": "Sab, 08 Agu 2026 • 19.30 WIB", "a": null, "b": null }
-    ]},
-    { "name": "FINAL", "tag": "FINAL", "matches": [
-      { "date": "Min, 16 Agu 2026 • 19.00 WIB", "a": null, "b": null }
-    ]}
+    {
+      "name": "32 BESAR",
+      "tag": "32B",
+      "matches": [
+        {
+          "date": "Jum, 31 Jul 2026 \u2022 16.00 WIB",
+          "a": 0,
+          "b": 1,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Sab, 01 Agu 2026 \u2022 16.00 WIB",
+          "a": 2,
+          "b": 3,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Min, 02 Agu 2026 \u2022 16.00 WIB",
+          "a": 4,
+          "b": 5,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Sen, 03 Agu 2026 \u2022 16.00 WIB",
+          "a": 6,
+          "b": 7,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Sel, 04 Agu 2026 \u2022 16.00 WIB",
+          "a": 8,
+          "b": 9,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Rab, 05 Agu 2026 \u2022 16.00 WIB",
+          "a": 10,
+          "b": 11,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Kam, 06 Agu 2026 \u2022 16.00 WIB",
+          "a": 12,
+          "b": 13,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Jum, 07 Agu 2026 \u2022 16.00 WIB",
+          "a": 14,
+          "b": 15,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Sab, 08 Agu 2026 \u2022 16.00 WIB",
+          "a": 16,
+          "b": 17,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Min, 09 Agu 2026 \u2022 16.00 WIB",
+          "a": 18,
+          "b": 19,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Sen, 10 Agu 2026 \u2022 16.00 WIB",
+          "a": 20,
+          "b": 21,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Sel, 11 Agu 2026 \u2022 16.00 WIB",
+          "a": 22,
+          "b": 23,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Rab, 12 Agu 2026 \u2022 16.00 WIB",
+          "a": 24,
+          "b": 25,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Kam, 13 Agu 2026 \u2022 16.00 WIB",
+          "a": 26,
+          "b": 27,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Jum, 14 Agu 2026 \u2022 16.00 WIB",
+          "a": 28,
+          "b": 29,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        },
+        {
+          "date": "Sab, 15 Agu 2026 \u2022 16.00 WIB",
+          "a": 30,
+          "b": 31,
+          "scoreA": null,
+          "scoreB": null,
+          "penA": null,
+          "penB": null
+        }
+      ]
+    },
+    {
+      "name": "16 BESAR",
+      "tag": "16B",
+      "matches": [
+        {
+          "date": "Sel, 21 Jul 2026 \u2022 15.15 WIB",
+          "a": null,
+          "b": null
+        },
+        {
+          "date": "Sel, 21 Jul 2026 \u2022 19.30 WIB",
+          "a": null,
+          "b": null
+        },
+        {
+          "date": "Rab, 22 Jul 2026 \u2022 15.15 WIB",
+          "a": null,
+          "b": null
+        },
+        {
+          "date": "Rab, 22 Jul 2026 \u2022 19.30 WIB",
+          "a": null,
+          "b": null
+        },
+        {
+          "date": "Kam, 23 Jul 2026 \u2022 15.15 WIB",
+          "a": null,
+          "b": null
+        },
+        {
+          "date": "Kam, 23 Jul 2026 \u2022 19.30 WIB",
+          "a": null,
+          "b": null
+        },
+        {
+          "date": "Sab, 25 Jul 2026 \u2022 15.15 WIB",
+          "a": null,
+          "b": null
+        },
+        {
+          "date": "Sab, 25 Jul 2026 \u2022 19.30 WIB",
+          "a": null,
+          "b": null
+        }
+      ]
+    },
+    {
+      "name": "8 BESAR",
+      "tag": "8B",
+      "matches": [
+        {
+          "date": "Min, 26 Jul 2026 \u2022 15.15 WIB",
+          "a": null,
+          "b": null
+        },
+        {
+          "date": "Min, 26 Jul 2026 \u2022 19.30 WIB",
+          "a": null,
+          "b": null
+        },
+        {
+          "date": "Sel, 28 Jul 2026 \u2022 15.15 WIB",
+          "a": null,
+          "b": null
+        },
+        {
+          "date": "Sel, 28 Jul 2026 \u2022 19.30 WIB",
+          "a": null,
+          "b": null
+        }
+      ]
+    },
+    {
+      "name": "SEMI FINAL",
+      "tag": "SF",
+      "matches": [
+        {
+          "date": "Sab, 08 Agu 2026 \u2022 15.15 WIB",
+          "a": null,
+          "b": null
+        },
+        {
+          "date": "Sab, 08 Agu 2026 \u2022 19.30 WIB",
+          "a": null,
+          "b": null
+        }
+      ]
+    },
+    {
+      "name": "FINAL",
+      "tag": "FINAL",
+      "matches": [
+        {
+          "date": "Min, 16 Agu 2026 \u2022 19.00 WIB",
+          "a": null,
+          "b": null
+        }
+      ]
+    }
   ],
   "top_scorers": [
-    {"name": "Belum Ada", "team": "-", "goals": 0}
+    {
+      "name": "Belum Ada",
+      "team": "-",
+      "goals": 0
+    }
   ]
 }
